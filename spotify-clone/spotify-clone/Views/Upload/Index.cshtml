@@ -1,0 +1,31 @@
+﻿@model spotify_clone.ViewControllers.SongsViewController
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Songs</h2>
+
+<div class="upload-button">
+    <button onclick="window.location.href = '/upload/upload';" type="button" class="btn btn-primary">Upload Song</button>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Song</th>
+        <th scope="col">Link</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    @foreach (var song in Model.Songs)
+    {
+        <tr>
+            <td>@song</td>
+            <td>NA</td>
+        </tr>
+    }
+    
+
+    </tbody>
+</table>
