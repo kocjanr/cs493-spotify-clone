@@ -31,12 +31,12 @@ namespace spotify_clone.Controllers
 
 
           [HttpPost]
-          public ActionResult UploadFile(String fileupload, String Artist, String Album)
+          public ActionResult UploadFile(String fileupload, String artist, String album)
           {
                String x = "X";
 
-               String bucket = "cs493.ryankojan.files";
-               String path = bucket + "/album/";
+               String bucket = "cs493.ryankojan.files."+ artist;
+               String path = bucket + "/"+album;
 
                AWS aws = new AWS();
                aws.CreateS3Bucket(bucket);
