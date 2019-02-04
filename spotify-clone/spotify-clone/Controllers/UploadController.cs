@@ -13,13 +13,7 @@ namespace spotify_clone.Controllers
      {
           public ActionResult Index()
           {
-               SongsViewController vc = new SongsViewController();
-
-               AWS aws = new AWS();
-               var songs = aws.GetSongsFromBucket();
-
-               vc.Songs = songs;
-               return View(vc);
+               return View();
           }
 
           public ActionResult Upload()
@@ -37,17 +31,26 @@ namespace spotify_clone.Controllers
 
 
           [HttpPost]
-          public ActionResult UploadFile(String fileupload)
+          public ActionResult UploadFile(String fileupload, String Artist, String Album)
           {
+               String x = "X";
+
+               String bucket = "cs493.ryankojan.files";
+               String path = bucket + "/album/";
+
+               AWS aws = new AWS();
+               aws.CreateS3Bucket(bucket);
+
                string rootFolder = @"C:\Users\Ryan\Desktop\mp3s\";
 
                string filePath = rootFolder + fileupload;
 
-               AWS aws = new AWS();
-               string bucket = "toast-hw6-files";
-             
+               //AWS aws = new AWS();
+               //string bucket = "toast-hw6-files";
+               //aws.CreateS3Bucket(bucket);
 
-               aws.UploadToS3(bucket, fileupload, filePath);
+
+               aws.UploadToS3(path, fileupload, filePath);
 
                return RedirectToAction("Index", "Upload");
           }
