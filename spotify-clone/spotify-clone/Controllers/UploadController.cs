@@ -33,8 +33,6 @@ namespace spotify_clone.Controllers
           [HttpPost]
           public ActionResult UploadFile(String fileupload, String artist, String album)
           {
-               String x = "X";
-
                String bucket = "cs493.ryankojan.files."+ artist;
                String path = bucket + "/"+album;
 
@@ -44,11 +42,6 @@ namespace spotify_clone.Controllers
                string rootFolder = @"C:\Users\Ryan\Desktop\mp3s\";
 
                string filePath = rootFolder + fileupload;
-
-               //AWS aws = new AWS();
-               //string bucket = "toast-hw6-files";
-               //aws.CreateS3Bucket(bucket);
-
 
                aws.UploadToS3(path, fileupload, filePath);
 
