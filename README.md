@@ -16,6 +16,13 @@ Update Web.config file to corresponding AWS credentials
      </appSettings>
 <configuration>
 ```
++ On line 42 of UploadController.cs change to local folder where MP3 files are stored. Currently the directory is hard coded. This is a feature.
+```
+string rootFolder = @"C:\Users\Ryan\Desktop\mp3s\";
+```
+```
+string rootFolder = @"<FILE DIRECTORY PATH>";
+```
 
 Running
 ---
